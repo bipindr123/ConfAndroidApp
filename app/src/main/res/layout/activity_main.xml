@@ -29,7 +29,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:src="@android:drawable/ic_input_add"
-        app:backgroundTint="?android:attr/colorPressedHighlight"
+        app:fabCustomSize="@android:dimen/notification_large_icon_width"
         app:fabSize="normal" />
 
 </android.support.design.widget.CoordinatorLayout>

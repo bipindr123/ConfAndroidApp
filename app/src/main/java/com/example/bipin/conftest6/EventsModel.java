@@ -8,8 +8,7 @@ public class EventsModel {
     String eventDate;
     String eventLink;
 
-    public EventsModel() {
-    }
+    public EventsModel() { }
 
     public String getName() {
         return eventName;
@@ -26,7 +25,6 @@ public class EventsModel {
     public void setDescription(String description) {
         this.eventDesc = description;
     }
-
 
 
     public String getEventLink() {

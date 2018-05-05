@@ -1,6 +1,7 @@
 package com.example.bipin.conftest6;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,7 +13,7 @@ import android.widget.TextView;
 public class DetailActivity extends AppCompatActivity {
 
 
-    TextView nameTxt,descTxt, propTxt;
+    TextView nameTxt, descTxt, dateTxt, linkTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,32 +24,39 @@ public class DetailActivity extends AppCompatActivity {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab2);
 
         nameTxt = (TextView) findViewById(R.id.nameDetailTxt);
-        descTxt= (TextView) findViewById(R.id.descDetailTxt);
-        propTxt = (TextView) findViewById(R.id.dateDetailTxt);
+        descTxt = (TextView) findViewById(R.id.descDetailTxt);
+        dateTxt = (TextView) findViewById(R.id.dateDetailTxt);
 
         //get intent
-        Intent i=this.getIntent();
+        Intent i = this.getIntent();
 
 
         //RECEIVE DATA
-        String name=i.getExtras().getString("NAME_KEY");
-        String desc=i.getExtras().getString("DESC_KEY");
-        String propellant=i.getExtras().getString("PROP_KEY");
+        String name = i.getExtras().getString("NAME_KEY");
+        String desc = i.getExtras().getString("DESC_KEY");
+        String propellant = i.getExtras().getString("DATE_KEY");
+        final String evenLink = i.getExtras().getString("EVENT_LINK");
 
         //BIND DATA
         nameTxt.setText(name);
         descTxt.setText(desc);
-        propTxt.setText(propellant);
-
+        dateTxt.setText(propellant);
 
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                openUrl(evenLink);
             }
         });
     }
+
+    public void openUrl(String link) {
+
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+        startActivity(browserIntent);
+
+    }
+
 
 }

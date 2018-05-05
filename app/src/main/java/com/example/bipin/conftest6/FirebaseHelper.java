@@ -14,19 +14,19 @@ public class FirebaseHelper {
 
     DatabaseReference db;
     Boolean saved = null;
-    ArrayList<EventsModel> spacecrafts = new ArrayList<>();
+    ArrayList<EventsModel> myevents = new ArrayList<>();
 
     public FirebaseHelper(DatabaseReference db) {
         this.db = db;
     }
 
     //WRITE IF NOT NULL
-    public Boolean save(EventsModel spacecraft) {
-        if (spacecraft == null) {
+    public Boolean save(EventsModel myevent) {
+        if (myevent == null) {
             saved = false;
         } else {
             try {
-                db.child("Events").push().setValue(spacecraft);
+                db.child("Events").push().setValue(myevent);
                 saved = true;
 
             } catch (DatabaseException e) {
@@ -40,12 +40,12 @@ public class FirebaseHelper {
 
     //IMPLEMENT FETCH DATA AND FILL ARRAYLIST
     private void fetchData(DataSnapshot dataSnapshot) {
-        spacecrafts.clear();
+        myevents.clear();
 
         for (DataSnapshot ds : dataSnapshot.getChildren()) {
             EventsModel spacecraft = ds.getValue(EventsModel.class);
-            spacecrafts.add(spacecraft);
-            Log.d("bruh", "fetchData: "+ spacecraft.eventName);
+            myevents.add(spacecraft);
+            Log.d("bruh", "fetchData: " + spacecraft.eventName);
         }
 
     }
@@ -80,8 +80,10 @@ public class FirebaseHelper {
             }
         });
 
-        return spacecrafts;
+        return myevents;
     }
+
+
 }
 
 
