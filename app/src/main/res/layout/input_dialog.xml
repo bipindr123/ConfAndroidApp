@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/custom_dialog_layout_design_user_input"
+    android:layout_width="400dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add an Event"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:paddingBottom="20dp"/>
+
+    <EditText
+        android:id="@+id/editEvenName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Event name"
+        android:inputType="text"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/editEventDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Event Description"
+        android:inputType="textLongMessage"
+        android:padding="20dp"
+        android:paddingBottom="30dp"/>
+
+    <EditText
+        android:id="@+id/editEventDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Event Date"
+        android:inputType="date"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/editEventLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Event Link"
+        android:inputType="text"
+        android:padding="10dp"/>
+
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:text="Save" />
+
+</LinearLayout>
