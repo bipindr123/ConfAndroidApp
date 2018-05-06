@@ -20,6 +20,7 @@ public class FirebaseHelper {
         this.db = db;
     }
 
+
     //WRITE IF NOT NULL
     public Boolean save(EventsModel myevent) {
         if (myevent == null) {
@@ -50,12 +51,14 @@ public class FirebaseHelper {
 
     }
 
+
     //READ BY HOOKING ONTO DATABASE OPERATION CALLBACKS
-    public ArrayList<EventsModel> retrieve() {
+    public ArrayList<EventsModel> retrieve(final MainActivity.FirebaseCallBack listener) {
         db.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 fetchData(dataSnapshot);
+                listener.onCallBack(myevents);
             }
 
             @Override

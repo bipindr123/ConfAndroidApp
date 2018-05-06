@@ -13,11 +13,14 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         //INITIALIZE FIREBASE DB
         db = FirebaseDatabase.getInstance().getReference();
         helper = new FirebaseHelper(db);
-        ArrayList<EventsModel> firedata = helper.retrieve();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -51,12 +53,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Basically Passing the function as a parameter so its called inside
+        helper.retrieve(new FirebaseCallBack() {
+            @Override
+            public void onCallBack(ArrayList<EventsModel> list) {
+                adapter = new CustomAdapter(MainActivity.this, list);
+                gv.setAdapter(adapter);
+            }
+        });
 
-        
-        adapter = new CustomAdapter(this,firedata);
-        gv.setAdapter(adapter);
-        Log.d(TAG, "onCreate: this ran");
 
+    }
+
+    interface FirebaseCallBack {
+        void onCallBack(ArrayList<EventsModel> list);
     }
 
 
@@ -108,9 +118,6 @@ public class MainActivity extends AppCompatActivity {
                         descEditTxt.setText("");
                         linkEditTxt.setText("");
 
-
-                        adapter = new CustomAdapter(MainActivity.this, helper.retrieve());
-                        gv.setAdapter(adapter);
 
                         Toast.makeText(MainActivity.this, "Saved Succesfully", Toast.LENGTH_LONG).show();
 
