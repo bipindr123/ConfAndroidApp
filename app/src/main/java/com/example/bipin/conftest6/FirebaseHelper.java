@@ -55,7 +55,7 @@ public class FirebaseHelper {
 
 
     //READ BY HOOKING ONTO DATABASE OPERATION CALLBACKS
-    public ArrayList<EventsModel> retrieve(final MainActivity.FirebaseCallBack listener) {
+    public ArrayList<EventsModel> retrieve(final MainActivity2.FirebaseCallBack listener) {
         db.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
