@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.bipin.conftest6.LoginActivity" />
-        <activity android:name="com.example.bipin.conftest6.Welcome" />
+        <activity android:name="com.example.bipin.conftest6.Welcome"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".MainActivity2"
             android:label="@string/app_name"

@@ -7,6 +7,11 @@
     android:background="@drawable/gradient"
     tools:context="com.example.bipin.conftest6.Welcome">
 
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:id="@+id/toolbarMain"></android.support.v7.widget.Toolbar>
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="280dp"
