@@ -50,7 +50,7 @@ public class Welcome extends AppCompatActivity {
                 .withActivity(this)
                 .withHeaderBackground(R.drawable.header)
                 .addProfiles(
-                        new ProfileDrawerItem().withName("Bipin").withEmail("bipindr123@gmail.com").withSelectedColor(Color.BLUE)
+                        new ProfileDrawerItem().withName("Bipin").withEmail("bipindr123@gmail.com").withIcon(getResources().getDrawable(R.drawable.profile3))
                 )
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
