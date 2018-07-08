@@ -15,6 +15,8 @@ import com.example.bipin.conftest6.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.example.bipin.conftest6.LoginActivity;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -38,15 +40,15 @@ public class Welcome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("home");
-        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("events");
+        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("home").withIcon(GoogleMaterial.Icon.gmd_home);
+        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("events").withIcon(FontAwesome.Icon.faw_calendar_alt2);
 
         Toolbar toolbar = findViewById(R.id.toolbarMain);
 
         // Create the AccountHeader
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
-                .withHeaderBackground(R.drawable.escilogo)
+                .withHeaderBackground(R.drawable.header)
                 .addProfiles(
                         new ProfileDrawerItem().withName("Bipin").withEmail("bipindr123@gmail.com").withSelectedColor(Color.BLUE)
                 )

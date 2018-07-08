@@ -11,12 +11,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
-
+import android.app.ProgressDialog;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.mikepenz.materialize.color.Material;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -53,11 +54,19 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
+        //wait dialog
+          final ProgressDialog mProgressDialog = new ProgressDialog(this);
+            mProgressDialog.setCancelable(false);
+            mProgressDialog.setMessage("Loading...");
+            mProgressDialog.show();
+
+
         //Basically Passing the function as a parameter so its called inside
         helper.retrieve(new FirebaseCallBack() {
             @Override
             public void onCallBack(ArrayList<EventsModel> list) {
                 adapter = new CustomAdapter(MainActivity2.this, list);
+                mProgressDialog.dismiss();
                 gv.setAdapter(adapter);
             }
         });
