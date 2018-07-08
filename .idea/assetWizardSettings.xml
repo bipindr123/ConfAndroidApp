@@ -23,7 +23,8 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="scalingPercent" value="61" />
+                                                <entry key="scalingPercent" value="108" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -33,7 +34,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundImage" value="C:\Users\bipin\Desktop\conftest6\app\src\main\res\drawable\escilogo23.png" />
+                                      <entry key="backgroundAssetType" value="COLOR" />
+                                      <entry key="backgroundColor" value="6abfff" />
+                                      <entry key="foregroundImage" value="C:\Users\bipin\Desktop\conftest6\app\src\main\res\drawable\logo24.png" />
                                     </map>
                                   </option>
                                 </PersistentState>
