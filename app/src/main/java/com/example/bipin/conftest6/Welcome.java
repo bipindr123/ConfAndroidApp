@@ -42,6 +42,7 @@ public class Welcome extends AppCompatActivity {
 
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("home").withIcon(GoogleMaterial.Icon.gmd_home);
         PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("events").withIcon(FontAwesome.Icon.faw_calendar_alt2);
+        PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName("FeedBack").withIcon(FontAwesome.Icon.faw_connectdevelop);
 
         Toolbar toolbar = findViewById(R.id.toolbarMain);
 
@@ -70,7 +71,7 @@ public class Welcome extends AppCompatActivity {
                 .withAccountHeader(headerResult)
                 .withActionBarDrawerToggleAnimated(true)
                 .addDrawerItems(
-                        item1,item2, new DividerDrawerItem()
+                        item1,item2, new DividerDrawerItem(), item3
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -80,6 +81,11 @@ public class Welcome extends AppCompatActivity {
                             // load tournament screen
                             Intent intent = new Intent(Welcome.this, MainActivity2.class);
 
+                            startActivity(intent);
+                        }
+                        if (drawerItem.getIdentifier() == 3) {
+                            // load tournament screen
+                            Intent intent = new Intent(Welcome.this, feedback.class);
                             startActivity(intent);
                         }
                         return true;

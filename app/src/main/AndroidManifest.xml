@@ -36,6 +36,9 @@
             android:name=".DetailActivity"
             android:label="MainEvents"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".feedback"
+            android:label="Send Feedback"
+            android:colorMode="wideColorGamut"></activity>
     </application>
 
 </manifest>
