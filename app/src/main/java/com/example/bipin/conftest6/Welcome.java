@@ -35,63 +35,14 @@ public class Welcome extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
 
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("home").withIcon(GoogleMaterial.Icon.gmd_home);
-        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("events").withIcon(FontAwesome.Icon.faw_calendar_alt2);
-        PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName("FeedBack").withIcon(FontAwesome.Icon.faw_connectdevelop);
-
         Toolbar toolbar = findViewById(R.id.toolbarMain);
 
-        // Create the AccountHeader
-        AccountHeader headerResult = new AccountHeaderBuilder()
-                .withActivity(this)
-                .withHeaderBackground(R.drawable.header)
-                .addProfiles(
-                        new ProfileDrawerItem().withName("Bipin").withEmail("bipindr123@gmail.com").withIcon(getResources().getDrawable(R.drawable.profile3))
-                )
-                .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
-                    @Override
-                    public boolean onProfileChanged(View view, IProfile profile, boolean currentProfile) {
-                        return false;
-                    }
-                })
-                .build();
-
-
-
-
-        //create the drawer and remember the `Drawer` result object
-        Drawer result = new DrawerBuilder()
-                .withActivity(this)
-                .withToolbar(toolbar)
-                .withAccountHeader(headerResult)
-                .withActionBarDrawerToggleAnimated(true)
-                .addDrawerItems(
-                        item1,item2, new DividerDrawerItem(), item3
-                )
-                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                    @Override
-                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        Log.d("check", "onItemClick: "+ position + drawerItem);
-                        if (drawerItem.getIdentifier() == 2) {
-                            // load tournament screen
-                            Intent intent = new Intent(Welcome.this, MainActivity2.class);
-
-                            startActivity(intent);
-                        }
-                        if (drawerItem.getIdentifier() == 3) {
-                            // load tournament screen
-                            Intent intent = new Intent(Welcome.this, feedback.class);
-                            startActivity(intent);
-                        }
-                        return true;
-                    }
-                })
-                .build();
         logoutBtn = (Button) findViewById(R.id.logoutBtn);
 
 
@@ -105,6 +56,8 @@ public class Welcome extends AppCompatActivity {
                 if(user != null)
                 {
 
+
+
                 }
                 else
                 {
@@ -112,6 +65,9 @@ public class Welcome extends AppCompatActivity {
                 }
             }
         };
+
+
+        NavDrawer.getDrawer(this, toolbar);
 
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,10 +81,11 @@ public class Welcome extends AppCompatActivity {
         });
     }
 
+
+
     @Override
     protected void onStart() {
         super.onStart();
-
 
         mAuth.addAuthStateListener(mAuthListener);
     }

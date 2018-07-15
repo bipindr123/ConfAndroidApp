@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,10 +31,12 @@ public class MainActivity extends AppCompatActivity {
 
     GoogleSignInClient mGoogleSignInClient;
 
+
     SignInButton signinbutton;
 
     Button createUser, moveToLogin;
     EditText userEmailEdit, userPassWordEdit;
+    static String logedInUser, logedInEmail;
 
     FirebaseAuth mAuth;
     FirebaseAuth auth;
@@ -58,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser user= firebaseAuth.getCurrentUser();
                 if(user != null)
                 {
+                    logedInUser = user.getEmail().split("@")[0];
+                    logedInEmail = user.getEmail();
+
                     startActivity(new Intent(MainActivity.this, Welcome.class));
                 }
                 else
@@ -70,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         createUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userEmailString, userPassString;
+               final String userEmailString, userPassString;
 
                 userEmailString = userEmailEdit.getText().toString().trim();
                 userPassString = userPassWordEdit.getText().toString().trim();
@@ -84,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
                             if(task.isSuccessful())
                             {
                                 Toast.makeText(MainActivity.this,"User Account Created Successfully", Toast.LENGTH_LONG).show();
+                                logedInUser = userEmailString.split("@")[0];
+                                logedInEmail = userEmailString;
                                 startActivity( new Intent(MainActivity.this, Welcome.class));
                             }
                             else
@@ -149,6 +157,8 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
 
                             FirebaseUser user = auth.getCurrentUser();
+                            logedInEmail = user.getEmail();
+                            logedInUser = user.getEmail().split("@")[0];
                             startActivity(new Intent(MainActivity.this, Welcome.class));
                             finish();
                             Toast.makeText(MainActivity.this,"User logged in successfully",Toast.LENGTH_LONG).show();

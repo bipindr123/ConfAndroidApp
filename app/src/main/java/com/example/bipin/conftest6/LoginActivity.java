@@ -48,6 +48,9 @@ public class LoginActivity extends AppCompatActivity {
                 FirebaseUser user= firebaseAuth.getCurrentUser();
                 if(user != null)
                 {
+                    MainActivity.logedInEmail = user.getEmail();
+                    MainActivity.logedInUser = user.getEmail().split("@")[0];
+
                     startActivity(new Intent(LoginActivity.this, Welcome.class));
 
                 }
@@ -73,6 +76,10 @@ public class LoginActivity extends AppCompatActivity {
 
                             if(task.isSuccessful())
                             {
+
+                                MainActivity.logedInEmail =userEmailString;
+                                MainActivity.logedInUser =userEmailString.split("@")[0];
+
                                 startActivity(new Intent(LoginActivity.this, Welcome.class));
                             }
                             else
