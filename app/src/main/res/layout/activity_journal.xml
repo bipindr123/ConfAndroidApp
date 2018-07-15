@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Journal">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/abeezee"
+                android:text="Journal of ESCI"
+                android:textAlignment="center"
+                android:textSize="36sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="552dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="15dp"
+
+                android:fontFamily="@font/abeezee"
+                android:isScrollContainer="true"
+                android:nestedScrollingEnabled="true"
+                android:overScrollMode="always"
+                android:scrollHorizontally="false"
+                android:scrollbarAlwaysDrawHorizontalTrack="false"
+                android:scrollbars="vertical"
+                android:text=" The society started publishing the Journal, JECSI in short in the year 1950 to give opportunity to young researchers to publish their findings in areas related to Electrochemistry and Allied Subjects. It is published 4 times in the year in the months of January, April, July and October. JECSI has been published continuously and is presently running the 68th Volume. Starting January 2018 (Vol. 68), the Editorial Committee took a decision to publish the journal on-line. Authors now submit their papers on line and the review process also takes place on-line and publication is also on-line. This results in much shorter periods for publication and very quick dissemination. For a copy of the instructions to Authors to submit their papers for publication in JECSI, visit the Website of the Journal (www.jecsi.org.in) or the website of the society (www.ecsi.in). All back issues of the journal may be viewed at www.jecsi.in. "
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

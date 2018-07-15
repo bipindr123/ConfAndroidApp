@@ -29,6 +29,7 @@ public class NavDrawer {
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Home").withIcon(GoogleMaterial.Icon.gmd_home);
         PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("Events").withIcon(FontAwesome.Icon.faw_calendar_alt2);
         PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName("FeedBack").withIcon(FontAwesome.Icon.faw_connectdevelop);
+        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName("Journal").withIcon(FontAwesome.Icon.faw_book_open);
 
         // Create the AccountHeader
         AccountHeader headerResult = new AccountHeaderBuilder()
@@ -55,7 +56,7 @@ public class NavDrawer {
                 .withCloseOnClick(true)
                 .withSelectedItem(-1)
                 .addDrawerItems(
-                        item1,item2, new DividerDrawerItem(), item3
+                        item1,item2, new DividerDrawerItem(), item3, item4
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -69,6 +70,11 @@ public class NavDrawer {
                         if (drawerItem.getIdentifier() == 3) {
                             // load tournament screen
                             Intent intent = new Intent(activity, feedback.class);
+                            view.getContext().startActivity(intent);
+                        }
+                        if (drawerItem.getIdentifier() == 4) {
+                            // load tournament screen
+                            Intent intent = new Intent(activity, Journal.class);
                             view.getContext().startActivity(intent);
                         }
                         return true;
